@@ -1,0 +1,8 @@
+{
+    "design": "Math Path",
+    "version": "1.0.0",
+    "description": "Draw shapes and extrude them with math",
+    "authors": [
+        {"name": "Adrian le Bas", "email": "adrian@adrians.info"}
+    ]
+}

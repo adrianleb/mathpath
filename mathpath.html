@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" class="tpl-dev">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Math Path</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <!-- begin:css -->
+        <link rel="stylesheet" href="styles/main-3.1.1.css"></script>
+        <!-- end:css -->
+    </head>
+    <body>
+        <main>
+            <h2>Math Path</h2>
+
+            <div class="dev-actions">
+                <button id="edit-design" class="button__action" type="button">Edit</button>
+                <button id="save-svg" class="button__action" type="button">SVG</button>
+                <button id="save-png" class="button__action" type="button">PNG</button>
+            </div>
+
+            <div id="static-view" class="is-visible">
+                <div id="static-image-outer">
+                    <img id="static-image" src="" alt="">
+                </div>
+            </div>
+
+            <div id="edit-view">
+                <div id="edit-canvas-outer">
+                    <div id="edit-canvas-wrapper">
+                        <canvas id="edit-canvas" data-paper-hidpi="on"></canvas>
+                    </div>
+                    <div id="edit-help"><div class="inner">
+                        <p>
+                            <b>Draw:</b> Simply Draw! As many lines or shapes as you like, simple lines works great.
+                        </p>
+                        <p>
+                            <b>Spread:</b> Spread points from original shape.
+                        </p>
+                        <p>
+                            <b>Twist:</b> Tighten or Spin points together or apart.
+                        </p>
+                        <p>
+                            <b>AddPoints:</b> Add more points, more detail to your air.
+                        </p>
+                        <p>
+                            <b>Style:</b> Adjust color and saturation of the final piece.
+                        </p>
+                        <button id="close-help">Close</button>
+                    </div></div>
+                </div>
+                <nav class="canvas-nav">
+                   <ul>
+                        <li id="switch-mode">
+                            <div id="mode-select"></div>
+                            <div class="button">Mode</div>
+                        </li>
+                        <li><button id="change-orientation" type="button">Rotate</button></li>
+                        <li><button id="reset-design" type="button">Reset</button></li>
+                        <li><button id="show-help" type="button">Help</button></li>
+                        <li><button id="apply-changes" type="button">Close</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </main>
+
+
+        <!-- vendor files -->
+        <!-- begin:vendor -->
+        <script src="scripts/vendor/jquery-2.1.3.js"></script>
+        <script src="scripts/vendor/paper-0.9.25.js"></script>
+        <!-- end:vendor -->
+
+        <!-- framework files -->
+        <!-- begin:wf_v2 -->
+        <script src="scripts/whalef/whalef-3.1.1.js"></script>
+        <!-- end:wf_v2 -->
+
+        <!-- design script -->
+        <!-- begin:design -->
+        <script src="scripts/designs/mathpath.js"></script>
+        <!-- end:design -->
+
+        <script>
+        $(function() {
+            var editable = document.getElementById("edit-canvas");
+            var static = document.getElementById("static-image");
+            // leave f global for debugging
+            f = new Framework(editable, static);
+            // edit design on load
+            document.getElementById('edit-design').click();
+        });
+        </script>
+    </body>
+</html>
