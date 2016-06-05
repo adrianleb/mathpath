@@ -20,6 +20,7 @@ var radiusInitial = 0.5;
 var radiusIncremental = 0.5;
 var pointsInitial = 108;
 var shouldSmooth = false;
+var strokeDivisor = 400;
 
 var Design = (function(d) {
     d = function(f) {
@@ -63,9 +64,10 @@ var Design = (function(d) {
 
     d.angle = 0.4812919945299557;// Math.PI + (Math.PI * 0.1); //54.99529840000005; //10.46600010001009;
     d.radius = rad;
-    d.points =pointsInitial; // 292;
+    d.points = pointsInitial; // 292;
     d.hue = 183.97030302408461;
     d.brightness = 0.7457950674765723;
+    d.strokeDivisor = strokeDivisor;
     d.color = new paper.Color({
         hue: d.hue,
         saturation: 1.0,
@@ -151,7 +153,7 @@ Design = (function(d) {
                 var finalPath = new paper.Path({
                     segments: thisFinalPathSegments,
                     strokeColor: this.color,
-                    strokeWidth: 1.1,
+                    strokeWidth: this.getStrokeWidth(),
                     closed: false,
                     strokeCap: 'round',
                     selected: false
@@ -165,6 +167,14 @@ Design = (function(d) {
             finalPath.smooth();
         }
     };
+
+    //
+    // strokewidth varies with canvas size
+    //
+    d.prototype.getStrokeWidth = function() {
+        var strokeDim = this.orientation === "portrait" ? "width" : "height";
+        return paper.view.size[strokeDim] / d.strokeDivisor;
+    }
 
     return d;
 
